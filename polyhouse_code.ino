@@ -48,7 +48,6 @@ void setup() {
   Serial.begin(9600);
   pinMode(mot, OUTPUT);
   pinMode(wat, OUTPUT);
-  // digitalWrite(waterPump, HIGH);
   lcd.init();
   lcd.backlight();
 
@@ -68,23 +67,7 @@ void setup() {
    dht.begin();
   timer.setInterval(100L, sendSensor);
 }
-// BLYNK_WRITE(V1){
 
-// }
-//Get the button value
-// BLYNK_WRITE(V1) {
-//   Relay = param.asInt();
-
-//   if (Relay == 1) {
-//     digitalWrite(waterPump, LOW);
-//     lcd.setCursor(0, 1);
-//     lcd.print("Motor is ON ");
-//   } else {
-//     digitalWrite(waterPump, HIGH);
-//     lcd.setCursor(0, 1);
-//     lcd.print("Motor is OFF");
-//   }
-// }
  BLYNK_WRITE(V1){
    s1=param.asInt();
 
@@ -97,9 +80,7 @@ void setup() {
     lcd.setCursor(0, 1);
     lcd.print("pump is OFF");
    }
-  //  lcd.clear();
-
-
+ 
  };
   BLYNK_WRITE(V4){
    s2=param.asInt();
@@ -146,13 +127,6 @@ void soilMoistureSensor() {
 
 void loop() {
   
-  //   digitalWrite(mot,HIGH);
-  // digitalWrite(wat,LOW);
-  // delay(3000);
-  
-  // digitalWrite(mot,LOW);
-  // digitalWrite(wat,HIGH);
-  // delay(3000);
   Blynk.run();//Run the Blynk library
   timer.run();//Run the Blynk timer
 }
